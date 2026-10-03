@@ -1,106 +1,88 @@
 (() => {
   const TITLE_ID = 'ad467bbb-ca91-44e9-8016-5067cdce954c';
-  const SKU = 'glitch-preorder';
+  const STEAM_SKU = 'steam-early-access';
+  const GLITCH_SKU = 'glitch-preorder';
   const CATALOG_URL = 'https://api.glitch.fun/api/titles/' + TITLE_ID + '/preorders';
   const GAME_URL = 'https://www.glitch.fun/games/' + TITLE_ID;
-
+  const DEFAULT_STEAM = { sku: STEAM_SKU, state: 'sold_out', status: 'active', limit_total: 100, remaining: 0, sold: 0, prices: [{ currency: 'USD', amount_minor: 2199 }] };
+  const DEFAULT_GLITCH = { sku: GLITCH_SKU, state: 'available', status: 'active', limit_total: 100, remaining: 100, sold: 0, prices: [{ currency: 'USD', amount_minor: 1599 }] };
   const all = (selector) => [...document.querySelectorAll(selector)];
 
-  all('[data-preorder-link]').forEach((link) => {
-    link.href = GAME_URL;
-    link.addEventListener('click', () => {
-      try {
-        sessionStorage.setItem('wotw_preorder_referrer', 'glitch_hosting_founders');
-      } catch {
-        // Storage is optional. Checkout remains on Glitch.
-      }
-      try {
-        window.GameAnalyticsTracker?.trackEvent(
-          'preorder',
-          'checkout_click',
-          { sku: SKU, destination: 'glitch_title_page' },
-          false
-        );
-        window.GameAnalyticsTracker?.flush?.();
-      } catch {
-        // Analytics must never block preorder navigation.
-      }
-    });
-  });
-
-  const formatMoney = (minor, currency) => {
-    try {
-      return new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency,
-        minimumFractionDigits: 2
-      }).format(minor / 100);
-    } catch {
-      return '$' + (minor / 100).toFixed(2);
-    }
+  const formatMoney = (offer, fallback) => {
+    const row = Array.isArray(offer?.prices) ? offer.prices.find((x) => x.currency === 'USD') || offer.prices[0] : null;
+    if (!row) return fallback;
+    try { return new Intl.NumberFormat('en-US', { style: 'currency', currency: row.currency || 'USD', minimumFractionDigits: 2 }).format(row.amount_minor / 100); }
+    catch { return '$' + (row.amount_minor / 100).toFixed(2); }
   };
 
-  const paint = (offer) => {
+  const steamStateText = (offer) => {
+    const total = Number.isFinite(offer?.limit_total) ? offer.limit_total : 100;
+    const remaining = Number.isFinite(offer?.remaining) ? offer.remaining : 0;
+    const sold = Number.isFinite(offer?.sold) ? offer.sold : 0;
+    if (offer?.state === 'available' && remaining > 0) return `${remaining} of ${total} Steam keys available`;
+    if (sold >= total && total > 0) return 'Steam Founding Team allocation claimed';
+    return 'Steam key inventory currently unavailable';
+  };
+
+  const glitchStateText = (offer) => {
+    const total = Number.isFinite(offer?.limit_total) ? offer.limit_total : 100;
     const remaining = Number.isFinite(offer?.remaining) ? offer.remaining : 100;
-    const total = Number.isFinite(offer?.limit_total) && offer.limit_total > 0 ? offer.limit_total : 100;
-    const priceRow = Array.isArray(offer?.prices)
-      ? offer.prices.find((row) => row.currency === 'USD') || offer.prices[0]
-      : null;
-    const price = priceRow ? formatMoney(priceRow.amount_minor, priceRow.currency || 'USD') : '$15.99';
-    const claimed = Math.max(0, total - remaining);
-    const claimedPct = Math.min(100, Math.max(0, (claimed / total) * 100));
-
-    ['remainingHero', 'remainingOffer', 'remainingFinal'].forEach((id) => {
-      const node = document.getElementById(id);
-      if (node) node.textContent = String(remaining);
-    });
-    ['priceHero', 'priceOffer', 'finalPrice'].forEach((id) => {
-      const node = document.getElementById(id);
-      if (node) node.textContent = price;
-    });
-
-    const nav = document.getElementById('navRemaining');
-    if (nav) nav.textContent = remaining + ' Founding Team spot' + (remaining === 1 ? '' : 's');
-
-    const band = document.getElementById('remainingBand');
-    if (band) band.textContent = remaining + ' / ' + total;
-
-    const meter = document.getElementById('availabilityMeter');
-    if (meter) meter.style.width = claimedPct + '%';
-
-    const cta = document.getElementById('ctaPrice');
-    if (cta) cta.textContent = price + ' • one per account';
-
-    if (offer && (offer.state !== 'available' || remaining < 1)) {
-      all('[data-preorder-link]').forEach((link) => {
-        link.setAttribute('aria-label', 'View current preorder status on Glitch');
-        link.classList.add('sold-out');
-        const label = link.querySelector('span');
-        if (label) label.textContent = 'View preorder status';
-        else link.textContent = 'View preorder status';
-      });
-    }
+    if (offer?.state === 'available' && remaining > 0) return `${remaining} of ${total} Glitch-license spots available`;
+    return 'Glitch-license preorder currently unavailable';
   };
 
-  paint(null);
-
-  fetch(CATALOG_URL, {
-    headers: { Accept: 'application/json' },
-    credentials: 'omit',
-    cache: 'no-store'
-  })
-    .then((response) => {
-      if (!response.ok) throw new Error('catalog unavailable');
-      return response.json();
-    })
-    .then((json) => {
-      const offers = json?.data?.offers;
-      const offer = Array.isArray(offers)
-        ? offers.find((item) => item?.sku === SKU && item?.fulfillment_type === 'glitch_license')
-        : null;
-      if (offer) paint(offer);
-    })
-    .catch(() => {
-      // Verified build-time fallback remains visible.
+  const linkAll = () => {
+    all('[data-steam-cta],[data-glitch-cta]').forEach((link) => {
+      link.href = GAME_URL;
+      link.addEventListener('click', () => {
+        const sku = link.hasAttribute('data-steam-cta') ? STEAM_SKU : GLITCH_SKU;
+        try { sessionStorage.setItem('wotw_preorder_referrer', 'glitch_hosting_founders'); } catch {}
+        try {
+          window.GameAnalyticsTracker?.trackEvent('preorder', 'checkout_click', { sku, destination: 'glitch_title_page' }, false);
+          window.GameAnalyticsTracker?.flush?.();
+        } catch {}
+      });
     });
+  };
+
+  const paint = (steam, glitch) => {
+    const steamPrice = formatMoney(steam, '$21.99');
+    const glitchPrice = formatMoney(glitch, '$15.99');
+    const steamText = steamStateText(steam);
+    const glitchText = glitchStateText(glitch);
+    const steamAvailable = steam?.state === 'available' && Number(steam?.remaining) > 0;
+
+    ['steamPriceHero','steamPriceBand','steamPriceOffer'].forEach((id) => { const n=document.getElementById(id); if(n) n.textContent=steamPrice; });
+    ['glitchPriceBand','glitchPriceOffer'].forEach((id) => { const n=document.getElementById(id); if(n) n.textContent=glitchPrice; });
+    ['steamStatusBand','steamStatusOffer'].forEach((id) => { const n=document.getElementById(id); if(n) n.textContent=steamText; });
+    ['glitchStatusBand','glitchStatusOffer'].forEach((id) => { const n=document.getElementById(id); if(n) n.textContent=glitchText; });
+
+    const heroStatus=document.getElementById('steamStatusHero'); if(heroStatus) heroStatus.textContent=steamAvailable ? 'Available' : 'Unavailable';
+    const heroInventory=document.getElementById('steamInventoryHero'); if(heroInventory) heroInventory.textContent=steamText;
+    const nav=document.getElementById('navOfferStatus'); if(nav) nav.textContent=steamAvailable ? 'Steam Founding Team keys available' : 'Steam preorder: check key availability';
+    const steamCtaPrice=document.getElementById('steamCtaPrice'); if(steamCtaPrice) steamCtaPrice.textContent=`${steamPrice} through Glitch`;
+    const steamCtaBottom=document.getElementById('steamCtaBottom'); if(steamCtaBottom) steamCtaBottom.textContent=`${steamPrice} through Glitch`;
+    const glitchCtaPrice=document.getElementById('glitchCtaPrice'); if(glitchCtaPrice) glitchCtaPrice.textContent=glitchPrice;
+    const glitchCtaBottom=document.getElementById('glitchCtaBottom'); if(glitchCtaBottom) glitchCtaBottom.textContent=glitchPrice;
+
+    all('[data-steam-cta]').forEach((link) => {
+      link.classList.toggle('sold-out', !steamAvailable);
+      const label=link.querySelector('span');
+      const text=steamAvailable ? 'Pre-order Steam key' : 'Check Steam preorder';
+      if(label) label.textContent=text; else link.textContent=text;
+      link.setAttribute('aria-label', steamAvailable ? `Pre-order Steam key for ${steamPrice} on Glitch` : 'Check current Steam preorder availability on Glitch');
+    });
+  };
+
+  linkAll();
+  paint(DEFAULT_STEAM, DEFAULT_GLITCH);
+  fetch(CATALOG_URL, { headers: { Accept: 'application/json' }, credentials: 'omit', cache: 'no-store' })
+    .then((r) => { if (!r.ok) throw new Error('catalog unavailable'); return r.json(); })
+    .then((json) => {
+      const offers = Array.isArray(json?.data?.offers) ? json.data.offers : [];
+      const steam = offers.find((x) => x?.sku === STEAM_SKU && x?.platform_code === 'steam') || DEFAULT_STEAM;
+      const glitch = offers.find((x) => x?.sku === GLITCH_SKU && x?.fulfillment_type === 'glitch_license') || DEFAULT_GLITCH;
+      paint(steam, glitch);
+    })
+    .catch(() => {});
 })();

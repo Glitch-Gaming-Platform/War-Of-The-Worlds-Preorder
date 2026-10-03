@@ -4,234 +4,140 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#090b0d">
-  <meta name="description" content="Join the first 100 players of The War of the Worlds Trilogy. Pre-order for early access, a personalized in-game NPC, and special first-playthrough items.">
+  <meta name="description" content="Pre-order The War of the Worlds Trilogy Founding Team edition. Steam key and Glitch editions are fulfilled through Glitch.">
   <meta property="og:title" content="The War of the Worlds Trilogy | Founding Team Pre-order">
-  <meta property="og:description" content="Only 100 Founding Team preorder spots. Enter the invasion early and leave your mark inside the world.">
+  <meta property="og:description" content="Enter H. G. Wells's invasion from three playable perspectives and join the limited Founding Team release.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/hero.jpg">
+  <meta property="og:image" content="assets/gameplay-vanguard.png">
   <title>The War of the Worlds Trilogy | Founding Team Pre-order</title>
-  <link rel="icon" href="assets/capsule.jpg">
-  <link rel="preload" href="assets/hero.jpg" as="image">
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preload" href="assets/gameplay-vanguard.png" as="image">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-nav">
-    <a class="brand" href="#top" aria-label="The War of the Worlds home">
-      <img src="assets/logo.png" alt="The War of the Worlds Trilogy">
-    </a>
-    <div class="nav-meta">
-      <span class="status-dot" aria-hidden="true"></span>
-      <span id="navRemaining">100 Founding Team spots</span>
-    </div>
-    <a class="nav-cta" href="https://www.glitch.fun/games/ad467bbb-ca91-44e9-8016-5067cdce954c" data-preorder-link>Pre-order</a>
+    <a class="brand" href="#top" aria-label="The War of the Worlds home"><img src="assets/logo.png" alt="The War of the Worlds Trilogy"></a>
+    <div class="nav-status"><span class="status-dot" aria-hidden="true"></span><span id="navOfferStatus">Steam Founding Team preorder</span></div>
+    <a class="nav-cta" href="https://www.glitch.fun/games/ad467bbb-ca91-44e9-8016-5067cdce954c" data-steam-cta>Check Steam preorder</a>
   </header>
 
   <main id="top">
     <section class="hero">
-      <div class="hero-media" role="img" aria-label="Victorian city under a Martian invasion"></div>
+      <img class="hero-media" src="assets/gameplay-vanguard.png" alt="Martian Vanguard gameplay showing a Fighting-Machine in combat" fetchpriority="high">
       <div class="hero-shade"></div>
       <div class="hero-content">
-        <p class="eyebrow">A limited Founding Team release</p>
-        <h1>Do not just survive the invasion.<br><em>Become part of its history.</em></h1>
-        <p class="hero-copy">H. G. Wells's Martian invasion becomes a three-perspective war for Earth. Build the city that must endure it, survive it on foot, then command the machines that came to conquer it.</p>
+        <p class="eyebrow">The War of the Worlds Trilogy</p>
+        <h1>Three perspectives.<br><em>One war for Earth.</em></h1>
+        <p class="hero-copy">Build a Victorian city for the invasion, survive the Martians at street level, then command the machines that came to conquer Earth.</p>
 
         <div class="offer-strip" aria-label="Preorder offer summary">
-          <div><strong id="remainingHero">100</strong><span>spots remain</span></div>
-          <div><strong id="priceHero">$15.99</strong><span>one-time preorder</span></div>
-          <div><strong>Oct 16</strong><span>Founding Team access</span></div>
-          <div><strong>Nov 6</strong><span>official launch</span></div>
+          <div><span>Steam Founding Team</span><strong id="steamPriceHero">$21.99</strong><small>Steam key preorder</small></div>
+          <div><span>Steam status</span><strong id="steamStatusHero">Checking inventory</strong><small id="steamInventoryHero">100-key allocation</small></div>
+          <div><span>Founding access</span><strong>Oct 16</strong><small>Steam preorder</small></div>
+          <div><span>Official launch</span><strong>Nov 6</strong><small>2026</small></div>
         </div>
 
         <div class="hero-actions">
-          <a class="primary-cta" href="https://www.glitch.fun/games/ad467bbb-ca91-44e9-8016-5067cdce954c" data-preorder-link>
-            <span>Claim Founding Team access</span>
-            <small id="ctaPrice">$15.99 • one per account</small>
-          </a>
-          <a class="secondary-cta" href="#founder-benefits">See what you get</a>
+          <a class="primary-cta" href="https://www.glitch.fun/games/ad467bbb-ca91-44e9-8016-5067cdce954c" data-steam-cta><span>Check Steam preorder</span><small id="steamCtaPrice">$21.99 through Glitch</small></a>
+          <a class="secondary-cta" href="https://www.glitch.fun/games/ad467bbb-ca91-44e9-8016-5067cdce954c" data-glitch-cta><span>Glitch edition</span><small id="glitchCtaPrice">$15.99</small></a>
         </div>
-        <p class="microcopy">Secure purchase is completed on Glitch. No payment details are collected on this page.</p>
+        <p class="microcopy">Checkout, account ownership, receipts, and fulfillment are handled securely on Glitch.</p>
       </div>
-      <a class="scroll-cue" href="#founder-benefits" aria-label="Scroll to preorder benefits">Explore ↓</a>
     </section>
 
-    <section class="scarcity-band">
+    <section class="availability-band" aria-label="Founding Team availability">
       <div>
-        <span class="kicker">100 players. One permanent mark on the world.</span>
-        <p>The Founding Team preorder is intentionally limited. When all 100 spots are claimed, this edition closes.</p>
+        <p class="eyebrow">Founding Team preorder</p>
+        <h2>Steam first. Glitch edition available separately.</h2>
       </div>
-      <div class="availability">
-        <div class="availability-row"><span>Founding Team availability</span><strong id="remainingBand">100 / 100</strong></div>
-        <div class="meter"><span id="availabilityMeter"></span></div>
+      <div class="availability-grid">
+        <article class="availability-card primary-offer"><span>Steam key preorder</span><strong id="steamPriceBand">$21.99</strong><p id="steamStatusBand">Checking Steam key inventory...</p></article>
+        <article class="availability-card"><span>Glitch license</span><strong id="glitchPriceBand">$15.99</strong><p id="glitchStatusBand">Checking availability...</p></article>
+      </div>
+    </section>
+
+    <section class="section modes" id="gameplay">
+      <div class="section-heading compact-heading">
+        <div><p class="eyebrow">Three games. One invasion.</p><h2>Play the war from every side.</h2></div>
+        <p>Every image below is captured directly from the game using the highest runtime asset tier.</p>
+      </div>
+      <div class="mode-grid">
+        <article class="mode-card"><img src="assets/gameplay-story.png" alt="Story Mode gameplay in Victorian England" loading="lazy"><div class="mode-copy"><span>01 / Survive</span><h3>Survive the invasion</h3><p>Move through Victorian England on foot, bicycle, and horse cart. Scavenge, evade the machines, and live through the Heat-Ray, Black Smoke, and occupation.</p></div></article>
+        <article class="mode-card"><img src="assets/gameplay-vanguard.png" alt="Martian Vanguard gameplay with a Fighting-Machine" loading="lazy"><div class="mode-copy"><span>02 / Conquer</span><h3>Command the Martian Vanguard</h3><p>Lead Fighting-Machines, Flying Machines, Handling Machines, and Digging Machines. Break defenses, capture humans, spread red weed, and conquer Earth.</p></div></article>
+        <article class="mode-card"><img src="assets/gameplay-city.png" alt="City Builder gameplay showing the Victorian city" loading="lazy"><div class="mode-copy"><span>03 / Defend</span><h3>Build the city that must endure</h3><p>Prepare a late-Victorian city, grow its industry and defenses, then hold it together as the Martian invasion reaches your streets.</p></div></article>
       </div>
     </section>
 
     <section class="section benefits" id="founder-benefits">
       <div class="section-heading">
-        <p class="eyebrow">Your Founding Team benefits</p>
-        <h2>Your name belongs in the invasion.</h2>
-        <p>This is more than getting the game early. The first 100 players get a permanent personal connection to the world and a distinct first-playthrough experience.</p>
+        <div><p class="eyebrow">Founding Team benefits</p><h2>Leave a permanent mark on the world.</h2></div>
+        <p>The limited preorder adds personal and first-playthrough benefits without changing the core campaign.</p>
       </div>
-
       <div class="benefit-grid">
-        <article class="benefit-card featured">
-          <span class="number">01</span>
-          <div class="benefit-image npc"></div>
-          <div class="benefit-copy">
-            <p class="tag">Personalized in-game NPC</p>
-            <h3>Meet yourself in Victorian England.</h3>
-            <p>Submit your likeness, the name you want used, and a set of lines you want your character to say. Your personalized NPC becomes part of the game world.</p>
-          </div>
-        </article>
-        <article class="benefit-card">
-          <span class="number">02</span>
-          <div class="benefit-image early"></div>
-          <div class="benefit-copy">
-            <p class="tag">Founding Team access</p>
-            <h3>Enter the war on October 16.</h3>
-            <p>Get the full game before the November 6 official launch. Your access is attached to your Glitch preorder account.</p>
-          </div>
-        </article>
-        <article class="benefit-card">
-          <span class="number">03</span>
-          <div class="benefit-image items"></div>
-          <div class="benefit-copy">
-            <p class="tag">First-playthrough extras</p>
-            <h3>Start with the special items unlocked.</h3>
-            <p>Founding Team players receive full access to the preorder special items for free during their first complete playthrough.</p>
-          </div>
-        </article>
+        <article><span>01</span><h3>Personalized in-game NPC</h3><p>Submit your likeness, chosen in-game name, and approved dialogue lines for a character that becomes part of Victorian England.</p></article>
+        <article><span>02</span><h3>Founding Team access</h3><p>Steam Founding Team access begins October 16, ahead of the November 6 official public launch.</p></article>
+        <article><span>03</span><h3>First-playthrough extras</h3><p>Founding Team players receive the preorder special items for their first complete playthrough.</p></article>
       </div>
     </section>
 
-    <section class="world-section">
-      <div class="world-intro">
-        <p class="eyebrow">Three games. One invasion.</p>
-        <h2>The War of the Worlds from every side.</h2>
-        <p>The campaign begins before anyone understands what is coming. Strange lights cross the sky. A cylinder falls at Horsell Common. Then the lid begins to turn.</p>
-      </div>
+    <section class="gameplay-feature">
+      <div class="feature-copy"><p class="eyebrow">Martian Vanguard</p><h2>Take command of the invasion.</h2><p>Issue battlefield orders, deploy the Martian machines, capture food, mine resources, and keep pressure on evacuating humans before they escape the city.</p></div>
+      <img src="assets/gameplay-vanguard.png" alt="Ultra-quality Martian Vanguard gameplay capture" loading="lazy">
+    </section>
 
-      <div class="mode-grid">
-        <article class="mode-card story">
-          <div class="mode-overlay"></div>
-          <div class="mode-copy">
-            <span>01 / Survive</span>
-            <h3>Survive the invasion</h3>
-            <p>Experience the human story at street level. Travel through a collapsing England, scavenge what you can, evade the machines, and live through the terror of the Heat-Ray, Black Smoke, and the occupied world.</p>
-          </div>
-        </article>
-        <article class="mode-card vanguard">
-          <div class="mode-overlay"></div>
-          <div class="mode-copy">
-            <span>02 / Conquer</span>
-            <h3>Command the Martian Vanguard</h3>
-            <p>Lead Fighting-Machines, Flying Machines, Handling Machines, and Digging Machines across the campaign. Break defenses, capture humans, spread the red weed, and turn Earth into a conquered world.</p>
-          </div>
-        </article>
-        <article class="mode-card city">
-          <div class="mode-overlay"></div>
-          <div class="mode-copy">
-            <span>03 / Defend</span>
-            <h3>Build the city that must endure</h3>
-            <p>Prepare a late-Victorian city while the warning signs mount, then defend it through the invasion. Industry, transport, healthcare, artillery, logistics, and the people you protect all matter when the machines arrive.</p>
-          </div>
-        </article>
+    <section class="section wells-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">Based on H. G. Wells</p><h2>The invasion follows the world of the 1898 novel.</h2></div>
+        <p>Horsell Common, artillery, the Heat-Ray, Black Smoke, red weed, evacuation, and the collapse of London are experienced from different playable perspectives.</p>
+      </div>
+      <div class="timeline-grid">
+        <article><span>Before</span><h3>Prepare</h3><p>The city-builder campaign gives you time to build industry, logistics, healthcare, transport, and defenses before the cylinders fall.</p></article>
+        <article><span>Invasion</span><h3>Survive</h3><p>The human campaign puts you on the roads and inside the ruined places where Wells's invasion becomes personal.</p></article>
+        <article><span>Other side</span><h3>Conquer</h3><p>The Vanguard campaign turns the same war into a command problem with Martian units, resources, captures, and time pressure.</p></article>
       </div>
     </section>
 
-    <section class="timeline-section">
-      <div class="timeline-copy">
-        <p class="eyebrow">The Wells campaign</p>
-        <h2>From uneasy skies to a world under siege.</h2>
-        <p>The city-builder campaign gives you 31 days to prepare before the first cylinder transforms normal life into a 21-day battle for survival.</p>
+    <section class="offer-section" id="preorder">
+      <div class="offer-card steam-card">
+        <div class="offer-label">Primary preorder</div>
+        <p class="eyebrow">Steam Founding Team</p>
+        <h2>Get the Steam key edition.</h2>
+        <div class="large-price" id="steamPriceOffer">$21.99</div>
+        <p id="steamStatusOffer" class="offer-status">Checking Steam key inventory...</p>
+        <ul class="checklist">
+          <li>Steam platform key fulfilled through Glitch</li>
+          <li>Personalized in-game NPC customization</li>
+          <li>Founding Team access beginning October 16</li>
+          <li>Preorder special items for the first full playthrough</li>
+          <li>Limited Founding Team allocation, one preorder per account</li>
+        </ul>
+        <a class="primary-cta full" href="https://www.glitch.fun/games/ad467bbb-ca91-44e9-8016-5067cdce954c" data-steam-cta><span>Check Steam preorder</span><small id="steamCtaBottom">$21.99 through Glitch</small></a>
       </div>
-      <ol class="timeline">
-        <li><span>01</span><div><strong>Watch the sky</strong><p>Rumors, astronomical observations, newspapers, and small warnings begin to accumulate.</p></div></li>
-        <li><span>02</span><div><strong>Horsell Common</strong><p>The first cylinder lands. Crowds gather. The impossible becomes real.</p></div></li>
-        <li><span>03</span><div><strong>The Heat-Ray</strong><p>The Martians emerge and humanity's assumptions about the war collapse in minutes.</p></div></li>
-        <li><span>04</span><div><strong>England breaks</strong><p>Artillery, evacuation, Black Smoke, red weed, and the advance on London reshape the map.</p></div></li>
-        <li><span>05</span><div><strong>The war ends differently for everyone</strong><p>Survivor, commander, or city planner, every mode puts you inside the same invasion from a different truth.</p></div></li>
-      </ol>
-    </section>
-
-    <section class="gallery-section" aria-label="In-game gallery">
-      <div class="gallery-title">
-        <p class="eyebrow">Inside the game</p>
-        <h2>Victorian England at the edge of extinction.</h2>
-      </div>
-      <div class="gallery">
-        <figure class="gallery-wide"><img src="assets/story-pit.png" alt="Story mode investigation near the Martian pit" loading="lazy"><figcaption>Story Mode: the first cylinder changes everything.</figcaption></figure>
-        <figure><img src="assets/vanguard-horsell.png" alt="Martian Vanguard gameplay at Horsell" loading="lazy"><figcaption>Vanguard: lead the invasion from the other side.</figcaption></figure>
-        <figure><img src="assets/tripod-city.png" alt="A Fighting-Machine towering above a Victorian city" loading="lazy"><figcaption>City Builder: prepare, defend, rebuild.</figcaption></figure>
-      </div>
-    </section>
-
-    <section class="offer-section">
-      <div class="offer-card">
-        <div class="offer-art">
-          <img src="assets/capsule.jpg" alt="The War of the Worlds Trilogy key art" loading="lazy">
-        </div>
-        <div class="offer-content">
-          <p class="eyebrow">Founding Team preorder</p>
-          <h2>Secure your place before the cylinders fall.</h2>
-          <ul class="checklist">
-            <li>Personalized NPC with your likeness, chosen name, and submitted lines</li>
-            <li>Full game access beginning October 16</li>
-            <li>Special preorder items unlocked free for your first full playthrough</li>
-            <li>Limited to 100 preorder spots, one per Glitch account</li>
-          </ul>
-          <div class="offer-price-row">
-            <div><span>Preorder price</span><strong id="priceOffer">$15.99</strong></div>
-            <div><span>Remaining</span><strong id="remainingOffer">100</strong></div>
-          </div>
-          <a class="primary-cta full" href="https://www.glitch.fun/games/ad467bbb-ca91-44e9-8016-5067cdce954c" data-preorder-link>
-            <span>Pre-order on Glitch</span>
-            <small>Secure account checkout</small>
-          </a>
-          <p class="offer-note">NPC customization instructions are provided to preorder buyers. Keep your preorder confirmation and follow the personalization instructions sent with the offer.</p>
-        </div>
+      <div class="offer-card fallback-card">
+        <div class="offer-label muted-label">Alternative</div>
+        <p class="eyebrow">Glitch edition</p>
+        <h2>Prefer the Glitch license?</h2>
+        <div class="large-price" id="glitchPriceOffer">$15.99</div>
+        <p id="glitchStatusOffer" class="offer-status">Checking availability...</p>
+        <p class="fallback-copy">The Glitch-license preorder is a separate offer. It is not a Steam key, but it carries the Founding Team preorder benefits attached to that offer.</p>
+        <a class="secondary-cta full" href="https://www.glitch.fun/games/ad467bbb-ca91-44e9-8016-5067cdce954c" data-glitch-cta><span>View Glitch edition</span><small id="glitchCtaBottom">$15.99</small></a>
       </div>
     </section>
 
     <section class="faq-section">
-      <div class="faq-heading">
-        <p class="eyebrow">Questions</p>
-        <h2>Before you join the Founding Team.</h2>
-      </div>
+      <div class="faq-heading"><p class="eyebrow">Questions</p><h2>Before you preorder.</h2></div>
       <div class="faq-list">
-        <details open><summary>What exactly am I preordering?</summary><p>You are purchasing the active Glitch preorder license for The War of the Worlds Trilogy. It is a one-time purchase tied to your Glitch account and is limited to one preorder per account.</p></details>
-        <details><summary>When do I get the full game?</summary><p>Founding Team access begins October 16. The official public launch is November 6.</p></details>
-        <details><summary>How does the personalized NPC work?</summary><p>Founding Team buyers can provide a likeness reference, their chosen in-game name, and lines they want the character to say. Personalization details are collected after purchase through the preorder follow-up process.</p></details>
-        <details><summary>What happens when all 100 spots are claimed?</summary><p>The Founding Team edition closes. The standard game launch is separate and is not limited to these 100 preorder spots.</p></details>
-        <details><summary>Is this the Steam key preorder?</summary><p>No. This page uses the currently available Glitch-license preorder. A separate Steam-key offer is not currently available for purchase.</p></details>
-        <details><summary>Where is payment handled?</summary><p>Checkout, account sign-in, receipts, refunds, and preorder ownership are handled on Glitch. This promotional site never receives your card details.</p></details>
-      </div>
-    </section>
-
-    <section class="final-cta">
-      <div class="final-backdrop"></div>
-      <div class="final-content">
-        <p class="eyebrow">The first cylinder is already on its way.</p>
-        <h2>There are only <span id="remainingFinal">100</span> Founding Team spots.</h2>
-        <p>Enter early. Leave your name in the world. Face the invasion from all three sides.</p>
-        <a class="primary-cta" href="https://www.glitch.fun/games/ad467bbb-ca91-44e9-8016-5067cdce954c" data-preorder-link>
-          <span>Claim your preorder</span>
-          <small id="finalPrice">$15.99</small>
-        </a>
+        <details open><summary>Which preorder is featured on this page?</summary><p>The primary offer is the Steam Founding Team key preorder. A separate Glitch-license preorder is shown as an alternative.</p></details>
+        <details><summary>Why can the Steam preorder show unavailable?</summary><p>Steam key availability comes from the live Glitch preorder catalog. If no Steam key inventory is available, the page shows that status rather than advertising keys that cannot currently be fulfilled.</p></details>
+        <details><summary>How does the personalized NPC work?</summary><p>Founding Team buyers can provide a likeness reference, chosen in-game name, and approved dialogue lines through the post-purchase personalization process.</p></details>
+        <details><summary>Where is payment handled?</summary><p>Checkout, account sign-in, receipts, refunds, preorder ownership, and fulfillment are handled on Glitch. This promotional page never receives your card details.</p></details>
       </div>
     </section>
   </main>
 
-  <footer>
-    <img src="assets/logo.png" alt="" aria-hidden="true">
-    <p>Based on H. G. Wells's 1898 novel <cite>The War of the Worlds</cite>.</p>
-    <p class="footer-small">Preorder availability, price, and release access are subject to the active Glitch preorder offer. Official launch: November 6, 2026.</p>
-  </footer>
+  <footer><img src="assets/logo.png" alt="" aria-hidden="true"><div><p>Based on H. G. Wells's 1898 novel <cite>The War of the Worlds</cite>.</p><p class="footer-small">Official launch: November 6, 2026. Preorder price, inventory, and fulfillment follow the active Glitch preorder catalog.</p></div></footer>
 
-  <script src="https://api.glitch.fun/js/game-analytics.js"
-    data-title-id="ad467bbb-ca91-44e9-8016-5067cdce954c"
-    data-tracking-token="dd44a9d295aa7f9c0e5885fda9579191c254075bd624cd87f3eace2dc6d9048a"
-    data-options='{"trackUser":true,"fingerprintUser":false,"cookieUser":true,"sendToConversionApis":false,"trackClicks":true,"trackScroll":true,"trackErrors":true,"trackPerformance":true}'
-    async></script>
+  <script src="https://api.glitch.fun/js/game-analytics.js" data-title-id="ad467bbb-ca91-44e9-8016-5067cdce954c" data-tracking-token="dd44a9d295aa7f9c0e5885fda9579191c254075bd624cd87f3eace2dc6d9048a" data-options='{"trackUser":true,"fingerprintUser":false,"cookieUser":true,"sendToConversionApis":false,"trackClicks":true,"trackScroll":true,"trackErrors":true,"trackPerformance":true}' async></script>
   <script src="app.js" defer></script>
 </body>
 </html>
